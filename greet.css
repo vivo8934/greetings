@@ -1,0 +1,39 @@
+.header{
+  text-align: center;
+  font-size: 45px;
+  font-family: Arial;
+  background-color: rgb(117, 135, 163);
+  box-sizing: border-box;
+}
+.buttons{
+margin-left: 60px;
+border-radius: 75%;
+}
+label{
+  font-size: 32px;
+}
+.output{
+  height: 50px;
+  width: 75%;
+  background-color: rgb(117, 135, 163);
+  font-size: x-large;
+
+}
+body {
+    background-color: lightgrey;
+    width: 650px;
+    border: 25px solid green;
+    padding: 30px;
+    margin: 35px;
+    height: 350px;
+  }
+.ul{
+  font-size: medium;
+  font-family: Arial;
+}
+.counter{
+  height: 50px;
+  color: red;
+  width:inherit;
+  font-size: 35px;
+}
