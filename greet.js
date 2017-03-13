@@ -38,3 +38,8 @@ BtnR.addEventListener('click', () => {
   helloList.innerHTML = '';
   textArea.value = '';
 });
+Ccounter.addEventListener('click', () => {
+  localStorage.count = 0;
+  Counter.innerHTML = localStorage.count;
+
+});
