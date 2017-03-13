@@ -3,12 +3,16 @@ var BtnR = document.querySelector('#btnR');
 var textArea = document.querySelector('.myText');
 var helloList = document.querySelector('.output');
 var Counter = document.querySelector('.counter')
+var Ccounter = document.querySelector('#btnReset')
 
 if (localStorage.count === undefined) {
   localStorage.setItem('count', 0);
 }
 if (localStorage.getItem('salute') === undefined) {
   localStorage.setItem('salute', JSON.stringify({}));
+}
+else{
+  salute  = JSON.parse(localStorage.getItem('salute'))
 }
 Counter.innerHTML = localStorage.count;
 BtnC.addEventListener('click', () => {
@@ -37,4 +41,9 @@ BtnC.addEventListener('click', () => {
 BtnR.addEventListener('click', () => {
   helloList.innerHTML = '';
   textArea.value = '';
+});
+Ccounter.addEventListener('click', () => {
+  localStorage.count = 0;
+  Counter.innerHTML = localStorage.count;
+
 });
