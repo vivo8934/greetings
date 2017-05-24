@@ -1,49 +1,49 @@
-var BtnC = document.querySelector('#btnC');
-var BtnR = document.querySelector('#btnR');
+var BtnGreet = document.querySelector('#btnC');
+var BtnClear = document.querySelector('#btnR');
 var textArea = document.querySelector('.myText');
-var helloList = document.querySelector('.output');
+var greetingOutput = document.querySelector('.output');
 var Counter = document.querySelector('.counter')
-var Ccounter = document.querySelector('#btnReset')
+var ClearCounter = document.querySelector('#btnReset')
 
 if (localStorage.count === undefined) {
   localStorage.setItem('count', 0);
 }
-if (localStorage.getItem('salute') === undefined) {
-  localStorage.setItem('salute', JSON.stringify({}));
+if (localStorage.getItem('greetedList') === undefined) {
+  localStorage.setItem('greetedList', JSON.stringify({}));
 }
 else{
-  salute  = JSON.parse(localStorage.getItem('salute'))
+  greetedList  = JSON.parse(localStorage.getItem('greetedList'))
 }
 Counter.innerHTML = localStorage.count;
-BtnC.addEventListener('click', () => {
-  var Rbb = document.querySelector("input[name = 'languages']:checked")
-  var x = Rbb.value;
+BtnGreet.addEventListener('click', () => {
+  var RadioBtnCheck = document.querySelector("input[name = 'languages']:checked")
+  var radioValue = RadioBtnCheck.value;
   if (textArea.value.length <= 0) {
 
     alert("Name must be filled out");
   } else {
 
 
-    helloList.innerHTML = x + (textArea.value.substr(0, 1).toUpperCase() + textArea.value.substr(1).toLowerCase());
+    greetingOutput.innerHTML = radioValue + (textArea.value.substr(0, 1).toUpperCase() + textArea.value.substr(1).toLowerCase());
   }
   var count = 0;
 
   var a = textArea.value;
-  var salute = JSON.parse(localStorage.getItem('salute'));
-  if (salute[a] === undefined && a.length > 0) {
-    salute[a] = 1;
+  var greetedList = JSON.parse(localStorage.getItem('greetedList'));
+  if (greetedList[a] === undefined && a.length > 0) {
+    greetedList[a] = 1;
     localStorage.count++;
     Counter.innerHTML = localStorage.count;
-    localStorage.setItem('salute', JSON.stringify(salute));
+    localStorage.setItem('greetedList', JSON.stringify(greetedList));
   }
 
 });
-BtnR.addEventListener('click', () => {
-  helloList.innerHTML = '';
+BtnClear.addEventListener('click', () => {
+  greetingOutput.innerHTML = '';
   textArea.value = '';
 });
-Ccounter.addEventListener('click', () => {
+
+ClearCounter.addEventListener('click', () => {
   localStorage.count = 0;
   Counter.innerHTML = localStorage.count;
-
 });

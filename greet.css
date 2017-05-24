@@ -1,3 +1,4 @@
+
 .header{
   text-align: center;
   font-size: 45px;
@@ -24,7 +25,7 @@ body {
     width: 650px;
     border: 25px solid green;
     padding: 30px;
-    margin: 35px;
+    margin: auto;;
     height: 350px;
   }
 .ul{
