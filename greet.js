@@ -1,6 +1,6 @@
 var BtnGreet = document.querySelector('#btnC');
 var BtnClear = document.querySelector('#btnR');
-var textArea = document.querySelector('.myText');
+var myText = document.querySelector('.myText');
 var greetingOutput = document.querySelector('.output');
 var Counter = document.querySelector('.counter')
 var ClearCounter = document.querySelector('#btnReset')
@@ -18,59 +18,63 @@ function onLocalStorage() {
   }
   Counter.innerHTML = localStorage.count;
 }
-//checkForBlanks
-function checkTextField() {
-
-  if (textArea.value.length <= 0) {
-
-    alert("Name must be filled out");
-  } else {
-    //chooseRadioBtn();
-    //generatingCounter();
-    var RadioBtnCheck = document.querySelector("input[name = 'languages']:checked")
-    var radioValue = RadioBtnCheck.value;
-    greetingOutput.innerHTML = radioValue + (textArea.value.substr(0, 1).toUpperCase() + textArea.value.substr(1).toLowerCase());
+function textfieldValue(){
+  var firstName = myText.value;
+  if(firstName < 0){
+    alert('please enter name');
+  }
+    else{
+      return firstName;
+      console.log(firstName);
+    }
   }
 
 
+function checkLanguages() {
+
+  if(document.getElementById("English").checked === true) {
+
+    return "English";
+  } else if (document.getElementById("IsiXhosa").checked === true) {
+    return "IsiXhosa";
+  } else if (document.getElementById("Mandarin").checked === true) {
+    return "Mandarin";
+
+  }
 }
-
-
-
-//checkTextField();
-
 
   //var count = 0;
   function generatingCounter() {
 
-  checkTextField();
-  checkTextField();
-  onLocalStorage();
-  var AreaValue = textArea.value;
-  var greetedList = JSON.parse(localStorage.getItem('greetedList'));
-  if (greetedList[AreaValue] === undefined && AreaValue.length > 0) {
-    greetedList[AreaValue] = 1;
-    localStorage.count++;
-    Counter.innerHTML = localStorage.count;
-    localStorage.setItem('greetedList', JSON.stringify(greetedList));
+    var AreaValue = textArea.value;
+    var greetedList = JSON.parse(localStorage.getItem('greetedList'));
+    if (greetedList[AreaValue] === undefined && AreaValue.length > 0) {
+      greetedList[AreaValue] = 1;
+      localStorage.count++;
+      Counter.innerHTML = localStorage.count;
+      localStorage.setItem('greetedList', JSON.stringify(greetedList));
+    }
   }
-}
 
-function generatingMsg() {
-  //  chooseRadioBtn();
-  checkTextField();
-  generatingCounter()
-}
+  function generatingMsg() {
 
-BtnClear.addEventListener('click', () => {
-  greetingOutput.innerHTML = '';
-  textArea.value = '';
-});
+    greet();
+    // generatingCounter()
+  }
 
-ClearCounter.addEventListener('click', () => {
-  localStorage.count = 0;
-  generatingCounter();
-});
+  BtnClear.addEventListener('click', () => {
+    greetingOutput.innerHTML = '';
+    textArea.value = '';
+  });
 
-BtnGreet.addEventListener('click', generatingMsg);
-onLocalStorage();
+  ClearCounter.addEventListener('click', () => {
+    localStorage.count = 0;
+    generatingCounter();
+  });
+
+  BtnGreet.addEventListener('click', () => {
+    greetingOutput.innerHTML = greeting(checkLanguages(), textfieldValue()); //radioValue + (textArea.value.substr(0, 1).toUpperCase() + textArea.value.substr(1).toLowerCase());
+
+  });
+
+  onLocalStorage();
